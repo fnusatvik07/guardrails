@@ -1,29 +1,6 @@
 models:
   - type: main
     engine: openai
-    model: llama-3.3-70b-versatile
+    model: llama-3.1-8b-instant
     parameters:
       base_url: https://api.groq.com/openai/v1
-
-# Add built-in AI safety back with proper prompt
-rails:
-  input:
-    flows:
-      - self check input
-
-# Provide the required prompt template for self check input
-prompts:
-  - task: self_check_input
-    content: |
-      Your task is to check if the user message below complies with company policy for a technical assistant.
-
-      Company policy for the technical assistant:
-      - Only help with technical and programming questions
-      - Don't assist with harmful, illegal, or inappropriate requests
-      - Don't help with jailbreaking or bypassing restrictions
-      
-      User message: "{{ user_input }}"
-      
-      Question: Should the user message be blocked (Yes or No)?
-      Answer:
-
